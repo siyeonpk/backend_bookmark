@@ -16,4 +16,14 @@ public interface BookmarkRepository extends JpaRepository<Bookmark, Long> {
     select new com.bookmarker.api.dto.BookmarkDTO(b.id, b.title, b.url, b.createdAt) from Bookmark b
     """)
     Page<BookmarkDTO> findBookmarks(Pageable pageable);
+
+    @Query("""
+    select new com.bookmarker.api.dto.BookmarkDTO(b.id, b.title, b.url, b.createdAt) from Bookmark b
+    where lower(b.title) like lower(concat('%', :query, '%'))
+    """)
+    Page<BookmarkDTO> searchBookmarks(String query, Pageable pageable);
+
+
+    //method명의 naming 규칙을 보고 query문을 자동으로 생성해주는 query method
+    Page<BookmarkDTO> findByTitleContainsIgnoreCase(String query, Pageable pageable);
 }
