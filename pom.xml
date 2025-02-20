@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		<problem-spring-web.version>0.29.1</problem-spring-web.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -99,6 +100,11 @@
 			<artifactId>hypersistence-utils-hibernate-63</artifactId>
 			<version>3.9.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.zalando</groupId>
+			<artifactId>problem-spring-web-starter</artifactId>
+			<version>${problem-spring-web.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -129,6 +135,8 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<!--jar 파일명설정-->
+		<finalName>springboot-nextjs-backend</finalName>
 	</build>
 
 </project>
